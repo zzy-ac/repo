@@ -22,7 +22,7 @@ _filename="${_pkgname}_${pkgver}_amd64.deb"
 install=typora.install
 source=("${_pkgname}_${pkgver}_amd64.deb::https://typora.io/linux/$_filename"
 "${_pkgname}.sh"
-"https://github.com/zzy-ac/repo/releases/download/source/typora-crack"
+"https://github.com/zzy-ac/repo_old/releases/download/source/typora-crack"
 )
 sha512sums=('SKIP'
             '6f35ee310308be4c7e726b5e4b7e023c86485fa4dd2f56e61d22eb28207be82cd09aab528e3d0de9881380dd44208479cc29b9f736826cf606a05119736b3ad4'
