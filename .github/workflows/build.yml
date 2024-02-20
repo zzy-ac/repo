@@ -10,8 +10,6 @@ jobs:
   buildAUR:
     strategy:
       matrix:
-        repos:
-
 #        - lx-music
         include:
           - repos: git-cola
