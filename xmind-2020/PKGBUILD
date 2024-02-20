@@ -12,7 +12,7 @@ license=('custom')
 depends=('libxss' 'nss' 'libxtst' 'alsa-lib' 'gtk3' 'electron11')
 provides=('xmind' "$pkgname")
 conflicts=("$pkgname")
-source=("https://github.com/zzy-ac/repo/releases/download/source/xmind-2020-11.0.1-0-x86_64.tar.gz")
+source=("https://github.com/zzy-ac/repo_old/releases/download/source/xmind-2020-11.0.1-0-x86_64.tar.gz")
 
 sha256sums=('51df096f5f5313987e6e005e2bd3ce0bc1ea4489e456a7a952f86d81837ac021')
 
