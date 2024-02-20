@@ -4,7 +4,7 @@ set -e
 init_path=$PWD
 mkdir upload_packages
 echo ok--------
-cp --no-clobber $local_path/*/*/*.tar.zst ./upload_packages/
+cp -f $local_path/*/*/*.tar.zst ./upload_packages/
 
 cd upload_packages || exit 1
 
