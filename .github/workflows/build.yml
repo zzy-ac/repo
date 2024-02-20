@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         repos:
-        - firefox-pwa
+
 #        - lx-music
         include:
           - repos: git-cola
@@ -41,7 +41,7 @@ jobs:
   buildNonAUR:
     strategy:
       matrix:
-        PKGBUILDs: [xmind-2020, plantsvszombies, pvz_beta]
+        PKGBUILDs: [plantsvszombies, pvz_beta]
 
       fail-fast: false
       
