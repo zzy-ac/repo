@@ -39,7 +39,7 @@ jobs:
         allowUpdates: true
         tag: "packages"
         artifacts: "./*/*.zst"
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.MY_GITHUB_TOKEN }}
 
   buildNonAUR:
     strategy:
@@ -71,7 +71,7 @@ jobs:
           allowUpdates: true
           tag: "packages"
           artifacts: ${{ steps.makepkg.outputs.pkgfile0 }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.MY_GITHUB_TOKEN }}
           
   uploadToOneDrive:      
     runs-on: ubuntu-latest
