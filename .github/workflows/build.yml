@@ -14,7 +14,7 @@ jobs:
 #        - aliyunpan-odomu-git
 #        - sabaki-electron
 #        - watt-toolkit-bin
-        - wps-office-cn
+##        - wps-office-cn
         - koreader-bin
         - google-chrome
         - microsoft-edge-stable-bin
@@ -33,7 +33,7 @@ jobs:
         - optimus-manager-qt
         - listen1-electron
         - flameshot-old
-        - icu70
+##        - icu70
         - r8168-dkms
         - heroic-games-launcher-git
         - firefox-pwa
