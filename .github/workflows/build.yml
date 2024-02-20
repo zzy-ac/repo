@@ -10,7 +10,35 @@ jobs:
   buildAUR:
     strategy:
       matrix:
+        repos:
+#        - aliyunpan-odomu-git
+#        - sabaki-electron
+#        - watt-toolkit-bin
+        - wps-office-cn
+        - koreader-bin
+        - google-chrome
+        - microsoft-edge-stable-bin
+        - deepin-wine-helper
+#        - icalingua++
+        - hollywood
+        - com.pal.dosbox
+        - fcitx5-skin-microsoft_style
+        - java-bytecode-editor
+        - markdown-editor-zzy-ac
+        - plasmavideowallpaper-git
+#        - clash-for-windows-electron-zh
+        - zinit-git
+        - kepubify-bin
+        - visual-studio-code-bin
+        - optimus-manager-qt
+        - listen1-electron
+        - flameshot-old-f
+        - icu70
+        - r8168-dkms
+        - heroic-games-launcher-git
+        - firefox-pwa
 #        - lx-music
+
         include:
           - repos: git-cola
             preinstall-pkgs: "at-spi2-core"
@@ -39,7 +67,7 @@ jobs:
   buildNonAUR:
     strategy:
       matrix:
-        PKGBUILDs: [plantsvszombies, pvz_beta]
+        PKGBUILDs: [xmind-2020, baidunetdisk, typora-electron-crack, electronic-wechat, rtw89-dkms-git, rtw89bt-dkms-git, stacer, plantsvszombies, pvz_beta]
 
       fail-fast: false
       
