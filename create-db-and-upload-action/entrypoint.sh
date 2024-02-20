@@ -3,7 +3,8 @@ set -e
 
 init_path=$PWD
 mkdir upload_packages
-cp -n $local_path/*/*/*.tar.zst ./upload_packages/
+echo ok--------
+cp $local_path/*/*/*.tar.zst ./upload_packages/
 
 cd upload_packages || exit 1
 
