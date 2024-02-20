@@ -8,8 +8,10 @@ on:
 jobs:
   buildAUR:
     strategy:
+      fail-fast: false
       matrix:
-	repos:
+        repos:
+
 #        - aliyunpan-odomu-git
 #        - sabaki-electron
 #        - watt-toolkit-bin
@@ -37,14 +39,12 @@ jobs:
         - heroic-games-launcher-git
         - firefox-pwa
 #        - lx-music
-        
-        include:
+
+	include:
           - repos: git-cola
             preinstall-pkgs: "at-spi2-core"
           - repos: realesrgan-ncnn-vulkan
             preinstall-pkgs: "vulkan-intel"
-
-      fail-fast: false
       
     runs-on: ubuntu-latest
     
