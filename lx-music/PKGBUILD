@@ -1,0 +1,35 @@
+# Maintainer: zzy-ac <zzy-ac@qq.com>
+pkgname=lx-music
+_pkgname=lx-music-desktop
+pkgver=2.3.0
+pkgrel=1
+_electron=electron
+pkgdesc='An Electron-based music player'
+arch=('x86_64')
+url='https://github.com/lyswhut/lx-music-desktop'
+license=('Apache')
+depends=("${_electron}")
+
+source=(
+  ${url}/releases/download/v$pkgver/$_pkgname-v$pkgver-x64.deb
+  lx-music.desktop)
+sha256sums=('SKIP'
+            '857078cbb06f94a8c375e18abb5dbe14ac369df26a03655c8e0a426dd58ba1f9')
+
+build() {
+  mkdir -p "${srcdir}/dpkgdir"
+  mkdir -p "${srcdir}/dpkgdir/temp"
+  tar -xvf data.tar.xz -C "${srcdir}/dpkgdir"
+  mv ${srcdir}/dpkgdir/opt/lx-music-desktop/resources/app.asar ${srcdir}/dpkgdir/temp
+  rm -rf ${srcdir}/dpkgdir/usr/share/doc ${srcdir}/dpkgdir/opt/lx-music-desktop/ ${srcdir}/dpkgdir/usr/share/applications
+  mv ${srcdir}/dpkgdir/temp ${srcdir}/dpkgdir/opt/lx-music-desktop/
+  echo -e '#!/bin/bash \nelectron /opt/lx-music-desktop/app.asar' > ${srcdir}/dpkgdir/opt/lx-music-desktop/lx-music
+  chmod a+x ${srcdir}/dpkgdir/opt/lx-music-desktop/lx-music
+  mkdir ${srcdir}/dpkgdir/usr/bin
+  mv ${srcdir}/dpkgdir/opt/lx-music-desktop/lx-music ${srcdir}/dpkgdir/usr/bin/lx-music
+}
+
+package() {
+  install -Dm644 lx-music.desktop -t "$pkgdir/usr/share/applications/"
+  cp -r "${srcdir}/dpkgdir"/* "${pkgdir}"
+} 

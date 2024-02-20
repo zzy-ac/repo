@@ -1,0 +1,22 @@
+# Maintainer: alpha0x00 <li_tking@163.com>
+# Maintainer: lightning1141 <lightning1141@gmail.com>
+
+pkgname=xmind-2020
+# the versin is from deb package
+pkgver=11.0.1
+pkgrel=2
+pkgdesc="XMind - The most popular mind mapping software"
+arch=("x86_64")
+url="https://www.xmind.net/"
+license=('custom')
+depends=('libxss' 'nss' 'libxtst' 'alsa-lib' 'gtk3' 'electron11')
+provides=('xmind' "$pkgname")
+conflicts=("$pkgname")
+source=("https://github.com/zzy-ac/repo/releases/download/source/xmind-2020-11.0.1-0-x86_64.tar.gz")
+
+sha256sums=('51df096f5f5313987e6e005e2bd3ce0bc1ea4489e456a7a952f86d81837ac021')
+
+package() {
+    cp -a ${srcdir}/opt ${pkgdir}/opt
+    cp -a ${srcdir}/usr ${pkgdir}/usr
+}

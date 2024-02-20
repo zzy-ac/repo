@@ -9,7 +9,35 @@ jobs:
   buildAUR:
     strategy:
       matrix:
-        repos: [osu-lazer, weechat-notify-send, fpp, redsocks, drill, git-cola, qbittorrent-qt5, realesrgan-ncnn-vulkan, python-torchaudio, python-torchinfo]
+	repos:
+#        - aliyunpan-odomu-git
+#        - sabaki-electron
+#        - watt-toolkit-bin
+        - wps-office-cn
+        - koreader-bin
+        - google-chrome
+        - microsoft-edge-stable-bin
+        - deepin-wine-helper
+        - icalingua++
+        - hollywood
+        - com.pal.dosbox
+        - fcitx5-skin-microsoft_style
+        - java-bytecode-editor
+        - markdown-editor-zzy-ac
+        - plasmavideowallpaper-git
+#        - clash-for-windows-electron-zh
+        - zinit-git
+        - kepubify-bin
+        - visual-studio-code-bin
+        - optimus-manager-qt
+        - listen1-electron
+        - flameshot-old
+        - icu70
+        - r8168-dkms
+        - heroic-games-launcher-git
+        - firefox-pwa
+#        - lx-music
+        
         include:
           - repos: git-cola
             preinstall-pkgs: "at-spi2-core"
@@ -33,18 +61,12 @@ jobs:
         path: ./*/*.pkg.tar.zst
         name: ${{ matrix.repos }}
         if-no-files-found: error
-        
-    - uses: ncipollo/release-action@v1
-      with:
-        allowUpdates: true
-        tag: "packages"
-        artifacts: "./*/*.zst"
-        token: ${{ secrets.MY_GITHUB_TOKEN }}
+
 
   buildNonAUR:
     strategy:
       matrix:
-        PKGBUILDs: [breeze10]
+        PKGBUILDs: [xmind-2020, plantsvszombies, pvz_beta, baidunetdisk, typora-electron-crack, electronic-wechat, rtw89-dkms-git, rtw89bt-dkms-git, stacer]
 
       fail-fast: false
       
@@ -65,34 +87,26 @@ jobs:
           path: ./*/*.pkg.tar.zst
           name: ${{ matrix.PKGBUILDs }}
           if-no-files-found: error
-      
-      - uses: ncipollo/release-action@v1
-        with:
-          allowUpdates: true
-          tag: "packages"
-          artifacts: ${{ steps.makepkg.outputs.pkgfile0 }}
-          token: ${{ secrets.MY_GITHUB_TOKEN }}
-          
-  uploadToOneDrive:      
-    runs-on: ubuntu-latest
-    if: always()
-    needs: [buildAUR, buildNonAUR]
 
+
+  uploadToReleases:
+    if: always()
+    needs:
+    - buildAUR
+    - buildNonAUR
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      
-      - uses: actions/download-artifact@v3
-        id: download
-      
-      - uses: ./create-db-and-upload-action
-        with:
-          RCLONE_ONEDRIVE_CLIENT_ID: ${{ secrets.RCLONE_ONEDRIVE_CLIENT_ID }}
-          RCLONE_ONEDRIVE_CLIENT_SECRET: ${{ secrets.RCLONE_ONEDRIVE_CLIENT_SECRET }}
-          RCLONE_ONEDRIVE_REGION: global
-          RCLONE_ONEDRIVE_TOKEN: ${{ secrets.RCLONE_ONEDRIVE_TOKEN }}
-          RCLONE_ONEDRIVE_DRIVE_ID: ${{ secrets.RCLONE_ONEDRIVE_DRIVE_ID }}
-          RCLONE_ONEDRIVE_DRIVE_TYPE: personal
-          dest_path: /archrepo
-          repo_name: vifly
-          gpg-privatekey: ${{ secrets.gpg_private_key }}
-          local_path: ${{ steps.download.outputs.download-path }}
+    - uses: actions/checkout@v2
+    - id: download
+      uses: actions/download-artifact@v2
+    - uses: ./create-db-and-upload-action
+      with:
+        dest_path: /arch-pkg
+        local_path: ${{ steps.download.outputs.download-path }}
+        repo_name: zzy-ac
+    - uses: ncipollo/release-action@v1
+      with:
+        allowUpdates: true
+        artifacts: ./*/*.zst,./*/zzy-ac.*
+        tag: x86_64
+        token: ${{ secrets.GITHUB_TOKEN }}

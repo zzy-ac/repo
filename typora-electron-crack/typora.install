@@ -1,0 +1,12 @@
+post_install() {
+    echo 
+    echo "cracking......"
+    typora-crack /usr/lib/typora/app.asar.unpacked/main.node
+    echo 
+}
+post_upgrade() {
+    echo 
+    echo "cracking......"
+    typora-crack /usr/lib/typora/app.asar.unpacked/main.node
+    echo 
+}

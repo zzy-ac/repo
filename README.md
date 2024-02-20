@@ -1,4 +1,19 @@
-Use Github Actions to build Arch packages.
-For more information, please read [my post](https://viflythink.com/Use_GitHubActions_to_build_AUR/) (Chinese).
+### 这里是archlinux的zzy-ac源
 
-The uploadToOneDrive job is optional, you can use [urepo](https://github.com/vifly/urepo) to create your package repositorie after upload to OneDrive.
+* 使用方法:
+打开/etc/pacman.conf</br>在文末输入：
+```bash
+[zzy-ac]
+SigLevel=Never
+Server = https://github.com/zzy-ac/repo/releases/download/x86_64/
+Server = https://gh.dmnb.cf/https://github.com/zzy-ac/repo/releases/download/x86_64/
+```
+保存文件</br>
+打开终端</br>
+输入
+
+```bash
+sudo pacman -Syu
+```
+回车输入密码</br>
+完成更新

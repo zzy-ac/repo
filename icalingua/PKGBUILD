@@ -1,0 +1,29 @@
+pkgname=icalingua
+pkgver=2.4.6
+pkgrel=1
+pkgdesc='A Linux client for QQ and more'
+license=('GPL')
+depends=('ffmpeg' 'electron13' 'libappindicator-gtk3')
+optdepends=('mongodb-bin: Provides storage'
+            'redis: Provides storage')
+arch=('x86_64')
+url="https://github.com/Icalingua/Icalingua"
+provides=('electron-qq' 'icalingua')
+conflicts=('electron-qq')
+replaces=('electron-qq')
+source=(https://github.com/zzy-ac/repo/releases/download/source/512x512.png
+        https://github.com/zzy-ac/repo/releases/download/source/icalingua.desktop
+        https://github.com/zzy-ac/repo/releases/download/source/icalingua
+        https://github.com/zzy-ac/repo/releases/download/source/app-x86_64.asar)
+
+package() {
+    install -Dm644 -t "${pkgdir}/usr/share/applications" "${pkgname}.desktop"
+    install -Dm644 "512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
+    install -Dm644 "app-x86_64.asar" "${pkgdir}/usr/lib/${pkgname}/${pkgname}.asar"
+    install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    ln -s "/usr/bin/${pkgname}" "${pkgdir}/usr/bin/electron-qq"
+}
+sha256sums=('84c8585e8c18504ed83b0d199831b55b9f8f0eb0a5aa4cb9e3dc01b4a17d0e38'
+            '43da1c99b7a6aee974c20da3bcf925b660dff4ba44a447c86066c84c8bc95fbd'
+            'a1cbce70262a3bf3c9a51b1be178378eae13ed454f557f1526b24af87d0be6aa'
+            'd05e43b1582d69a4f29eea4fe5f33adedd2f8b499d898607bdf704679e7bf145')
