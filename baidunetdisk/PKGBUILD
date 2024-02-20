@@ -15,8 +15,8 @@ url="https://pan.baidu.com"
 license=("custom")
 options=('!strip')
 
-source=("https://github.com/zzy-ac/repo/releases/download/source/0001-baidunetdisk-bin-desktop-file.patch"
-        "https://github.com/zzy-ac/repo/releases/download/source/baidunetdisk-wrapper.sh")
+source=("https://github.com/zzy-ac/repo_old/releases/download/source/0001-baidunetdisk-bin-desktop-file.patch"
+        "https://github.com/zzy-ac/repo_old/releases/download/source/baidunetdisk-wrapper.sh")
 
 #source_x86_64=("${pkgname}-${pkgver}.deb::https://issuecdn.baidupcs.com/issue/netdisk/LinuxGuanjia/${_mainver}/${pkgname}_linux_${pkgver}.deb")
 source_x86_64=("${pkgname}-${pkgver}.deb::http://wppkg.baidupcs.com/issue/netdisk/Linuxguanjia/${pkgver}/baidunetdisk_${pkgver}_amd64.deb")
