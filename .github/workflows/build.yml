@@ -108,4 +108,4 @@ jobs:
         allowUpdates: true
         artifacts: ./*/*.zst,./*/zzy-ac.*
         tag: x86_64
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.MY_GITHUB_TOKEN }}
