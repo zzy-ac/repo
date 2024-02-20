@@ -19,7 +19,7 @@ jobs:
         - google-chrome
         - microsoft-edge-stable-bin
         - deepin-wine-helper
-        - icalingua++
+#        - icalingua++
         - hollywood
         - com.pal.dosbox
         - fcitx5-skin-microsoft_style
