@@ -41,8 +41,6 @@ jobs:
         include:
           - repos: git-cola
             preinstall-pkgs: "at-spi2-core"
-          - repos: realesrgan-ncnn-vulkan
-            preinstall-pkgs: "vulkan-intel"
 
       fail-fast: false
       
