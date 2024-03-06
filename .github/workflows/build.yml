@@ -64,7 +64,7 @@ jobs:
   buildNonAUR:
     strategy:
       matrix:
-        PKGBUILDs: [xmind-2020, baidunetdisk, typora-electron-crack, electronic-wechat, rtw89-dkms-git, rtw89bt-dkms-git, stacer, plantsvszombies, pvz_beta]
+        PKGBUILDs: [xmind-2020, baidunetdisk, typora-electron-crack, electronic-wechat, rtw89-dkms-git, rtw89bt-dkms-git, stacer, plantsvszombies, pvz_beta, wechat-uos]
 
       fail-fast: false
       
