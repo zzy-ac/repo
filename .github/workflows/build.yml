@@ -24,7 +24,6 @@ jobs:
         - fcitx5-skin-microsoft_style
         - java-bytecode-editor
         - markdown-editor-zzy-ac
-        - plasmavideowallpaper-git
 #        - clash-for-windows-electron-zh
         - zinit-git
         - kepubify-bin
