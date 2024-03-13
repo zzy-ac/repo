@@ -6,7 +6,6 @@ fi
 bwrap --dev-bind / / \
     --bind /usr/share/wechat-uos/etc/os-release /etc/os-release \
     --bind /usr/share/wechat-uos/etc/lsb-release /etc/lsb-release \
-    --bind /usr/lib/wechat-uos/libuosdevicea.so /usr/lib/license/libuosdevicea.so \
+    --bind /usr/lib/wechat-uos/license/ /usr/lib/license/ \
     --bind /usr/share/wechat-uos/var/ /var/ \
     /usr/lib/wechat-uos/wechat "$@"
-
