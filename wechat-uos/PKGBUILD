@@ -8,7 +8,6 @@ pkgname=wechat-uos
 _pkgname=wechat
 pkgver=1.0.0.236
 pkgrel=1
-epoch=3
 pkgdesc="微信官方原生桌面版 WeChat desktop"
 arch=('x86_64' 'aarch64')
 url="https://weixin.qq.com/"
