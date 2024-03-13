@@ -6,8 +6,8 @@
 
 pkgname=wechat-uos
 _pkgname=wechat
-pkgver=1.0.0.145
-pkgrel=1
+pkgver=1.0.0.236
+pkgrel=2
 pkgdesc="微信官方原生桌面版 WeChat desktop"
 arch=('x86_64' 'aarch64')
 url="https://weixin.qq.com/"
@@ -23,31 +23,26 @@ source=(
   # from https://aur.archlinux.org/packages/com.tencent.weixin
   "license.tar.gz"
 )
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::https://cdn4.cnxclm.com/uploads/2024/03/05/3VDyAc0x_wechat-beta_1.0.0.145_amd64.deb?attname=wechat-beta_1.0.0.145_amd64.deb"
-"libuosdevicea.so_x86_64::https://dl.askk.cc/d/local_pub/uos/libuosdevicea.so"
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_1.0.0.236_amd64.deb"
 )
-source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.weixin/com.tencent.weixin_${pkgver}_arm64.deb")
-sha512sums=('3656e5e0382b2bebf597c7a49c4c4b2e90649e93e91791154c95ed718dc7059b71cbfe3e494836609d18af178474c2598220c66d83192e8beb4683842fba397f'
+sha512sums=('334a5185943f149f069611e5a668cb524f80892928be85ef0ecf5d83bbee442d7ac2fdd50cc8029d9040f8df66fd43145243e5c22ec99206d93c1481690ea7b4'
             '68d31d9e7a6ee14d5cc330acf55d9905be86c4ac187279e33494bc479a60c078b38eef0fa7833ba9fda2b14978f212d8647dd609b6f3037b0133701fe8f5e72b'
-            'd6a2cc365ff513b1adb69c71e60433ec8cde80fb41c12a614a65cd22f220b9175d930c38d2b4babde7b93ea76b23e0cf094a426555a9376fbcd9c31f21e79ed5')
-sha512sums_x86_64=('d5fba87a9cbb3eb29df4a54a93ff4af3473f42313073ce209e16f70ee592b81e7ba1622d14666986c194bf843a8419d6f5dd6e604407583aa1b59f8279fc8e59'
-                   'c475945091ba297339867f8ecde8adcb20f987443f99fecc5b3198bb9367aace4a5a36e753f70a322805311c508189131ad713399d3ea5bf45db8bbd0a2fe686')
-sha512sums_aarch64=('cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e')
+            'cea76fd37d987c6a6c21f18b51def9d06aba53f0d7e9a32a5cf6dcd578be152034696aac8a50ac08b9c2e7b5d8c98dbf13b835abe5e0cca28a2bb0b222cdea00')
+sha512sums_x86_64=('b119a80261102ddb1997c3513becb749718a16d970352a2f12beb86d01b090b39a8e2cf8f4175ea52ae0fa1319441ba8e4ac72ace7b20e9a4e8ec9f9c34a9b37')
 
 prepare(){
   tar -Jxvf data.tar.xz -C "${srcdir}"
+  mkdir -p ${srcdir}/usr/
+  mv ${srcdir}/opt/apps/com.tencent.wechat/entries/ ${srcdir}/usr/share/
+  mv ${srcdir}/usr/share/applications/com.tencent.wechat.desktop ${srcdir}/usr/share/applications/wechat.desktop
   sed -i 's|^Icon=.*|Icon=wechat|g;s|Exec=.*|Exec=wechat-uos %U|g' ${srcdir}/usr/share/applications/wechat.desktop
-  install -Dm644 ${srcdir}/opt/wechat-beta/icons/wechat.png -t ${srcdir}/usr/share/icons/hicolor/256x256/apps
-  rm -rf  ${srcdir}/opt/wechat-beta/icons
 }
 
 package(){
     cp -rf ${srcdir}/usr ${pkgdir}
     install -Dm755 ${srcdir}/wechat.sh  ${pkgdir}/usr/bin/wechat-uos
     install -d ${pkgdir}/usr/lib
-    mv ${srcdir}/opt/wechat-beta ${pkgdir}/usr/lib/${pkgname}
-
-    install -Dm644 "libuosdevicea.so_$(uname -m)" ${pkgdir}/usr/lib/${pkgname}/license/libuosdevicea.so
+    mv ${srcdir}/opt/apps/com.tencent.wechat/files/ ${pkgdir}/usr/lib/${pkgname}
     install -m 755 -d ${pkgdir}/usr/lib/license
     install -m 755 -d ${pkgdir}/usr/share/${pkgname}
     cp -r license/etc ${pkgdir}/usr/share/${pkgname}
