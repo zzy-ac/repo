@@ -6,9 +6,9 @@
 pkgname=typora-electron-crack
 _pkgname=typora
 pkgver=1.6.6
-_electron=electron
+_electron=electron27
 pkgrel=1
-pkgdesc="A minimal markdown editor and reader. (Typora with system electron)"
+pkgdesc="A minimal markdown editor and reader. "
 arch=('x86_64')
 license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
 url="https://typora.io/"
