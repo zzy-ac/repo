@@ -1,12 +1,14 @@
 post_install() {
     echo 
     echo "cracking......"
-    typora-crack /usr/lib/typora/app.asar.unpacked/main.node
-    echo 
+    /usr/bin/license-gen
+    echo 'Copy the license to crack typora'
+    rm /usr/bin/license-gen
 }
 post_upgrade() {
     echo 
     echo "cracking......"
-    typora-crack /usr/lib/typora/app.asar.unpacked/main.node
-    echo 
+    /usr/bin/license-gen
+    echo 'Copy the license to crack typora'
+    rm /usr/bin/license-gen
 }

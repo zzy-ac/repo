@@ -5,32 +5,48 @@
 
 pkgname=typora-electron-crack
 _pkgname=typora
-pkgver=1.6.6
-_electron=electron
+pkgver=1.8.10
+_electron=electron25
 pkgrel=1
 pkgdesc="A minimal markdown editor and reader. (Typora with system electron)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
-url="https://typora.io/"
+url="https://typora.io"
 provides=('typora')
-conflicts=('typora' 'typora-electron' 'typora-free')
+conflicts=('typora')
 depends=('ripgrep' "${_electron}")
+makedepends=('asar' 'rust')
 optdepends=(
 	'noto-fonts-emoji: Or some other emoji font to see emojis'
 	'pandoc: Import/export for extra file formats')
-_filename="${_pkgname}_${pkgver}_amd64.deb"
+source=("typora.sh"
+"crack.zip::https://github.com/hazukieq/Yporaject/archive/refs/heads/master.zip")
+source_x86_64=("${_pkgname}_${pkgver}_amd64.deb::${url}/linux/${_pkgname}_${pkgver}_amd64.deb")
+sha512sums=('6f35ee310308be4c7e726b5e4b7e023c86485fa4dd2f56e61d22eb28207be82cd09aab528e3d0de9881380dd44208479cc29b9f736826cf606a05119736b3ad4'
+            '777f8cfc8b82607696916a92d976f119cebf6af8b61acba033fa406dc47cab6413785080dc0280ba27e071ea14a53ca61f5ce49b3d13da3b9f0a3c1c65978664')
+sha512sums_x86_64=('6560774e283129fa556a916d412903893388194625472062a36dd84d771ae261974b0c6a3b4642b081e8e19a7bb9477720e00f39efa4934aa8301001127e69a6')
 install=typora.install
-source=("${_pkgname}_${pkgver}_amd64.deb::https://typora.io/linux/$_filename"
-"${_pkgname}.sh"
-"https://github.com/zzy-ac/repo_old/releases/download/source/typora-crack"
-)
-sha512sums=('SKIP'
-            '6f35ee310308be4c7e726b5e4b7e023c86485fa4dd2f56e61d22eb28207be82cd09aab528e3d0de9881380dd44208479cc29b9f736826cf606a05119736b3ad4'
-            '5594d11792fcab8ec4b159fd3b51160b76b0c7474f124fe8c86b421341d549c227c88732346b384502aa4cf6887cfb73098429d121ae42e6761f26db9fca68e4')
 
 prepare(){
 	bsdtar -xf data.tar.xz -C "$srcdir/"
 	sed -i "s|__ELECTRON__|${_electron}|" ${srcdir}/${_pkgname}.sh
+	cd $srcdir/usr/share/typora/resources/
+	# we do not need rg binary
+	asar e node_modules.asar nm
+	rm -rf nm/vscode-ripgrep/bin
+	asar p nm node_modules.asar
+	rm -rf nm
+	
+	cd $srcdir/Yporaject-master
+	cargo build
+	cp $srcdir/Yporaject-master/target/debug/node_inject $srcdir/usr/share/typora 
+	cd $srcdir/usr/share/typora
+	chmod +x node_inject
+	./node_inject
+	cd $srcdir/Yporaject-master/license-gen
+	cargo build
+	cp $srcdir/Yporaject-master/license-gen/target/debug/license-gen $srcdir/usr/bin
+	chmod +x $srcdir/usr/bin/license-gen
 }
 
 package() {
@@ -41,7 +57,7 @@ package() {
 	mv ${pkgdir}/usr/share/typora/resources/* ${pkgdir}/usr/lib/typora
 	install -Dm755 ${srcdir}/${_pkgname}.sh ${pkgdir}/usr/bin/${_pkgname}
 	ln -sf /usr/bin/rg ${pkgdir}/usr/lib/${_pkgname}/node_modules/vscode-ripgrep/bin/rg
-	install -Dm755 ${srcdir}/typora-crack $pkgdir/usr/bin
+	
 	rm -rf ${pkgdir}/usr/share/{doc,lintian,typora}
 
 } 
