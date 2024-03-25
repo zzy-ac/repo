@@ -14,7 +14,7 @@ license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
 url="https://typora.io"
 provides=('typora')
 conflicts=('typora')
-depends=('ripgrep' "${_electron}")
+depends=('ripgrep' "${_electron}-bin")
 makedepends=('asar' 'rust')
 optdepends=(
 	'noto-fonts-emoji: Or some other emoji font to see emojis'
