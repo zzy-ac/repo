@@ -24,12 +24,10 @@ source=(
 )
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_${pkgver}_amd64.deb"
 )
-source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_${pkgver}_arm64.deb")
 sha512sums=('cc8a83b48465f231a016595020786993a649cdfbb5bd6a3ff4db34054199cb342e3b293af510e19a22f470b63825a2588db2af11dda53ee1c82f8178bbef6247'
             '0af974b27095bdc36901020deb859c5ad7c85638359368c29ca4a50cf4f6313edccffebe125f15cd14e47ef4e0e1565780bb9b465c00229b3d57c94cc6fcd75a'
             '8b9d70162a5a71584cf85a309da48730de9db03f49a7e9611de04441864be80267e53e3155f7856c87ed53f99def277d74132392816c4f07893a02e99043ed6c')
 sha512sums_x86_64=('b00110b1a7a2a9634016886e726403ac91ed8f50ceeef2ee08ede03300a0b34b6dcf5d03d47c7494356407bdd78c43ff49813e47d4ef1ec17479edae85329ac8')
-sha512sums_aarch64=('a9d242bf784b62d30cb4a13c45c4421abf135b47f458d81acb7da1acf6f40a1dd045885a44ff4c8de516ea8d5d9a90f8fb65d135400dfb66948f85805b62f47d')
 # options=(!strip)
 prepare(){
     echo "  -> Extracting the data.tar.xz..."
