@@ -23,7 +23,7 @@ source=("typora.sh"
 "crack.zip::https://github.com/hazukieq/Yporaject/archive/refs/heads/master.zip")
 source_x86_64=("${_pkgname}_${pkgver}_amd64.deb::${url}/linux/${_pkgname}_${pkgver}_amd64.deb")
 sha512sums=('6f35ee310308be4c7e726b5e4b7e023c86485fa4dd2f56e61d22eb28207be82cd09aab528e3d0de9881380dd44208479cc29b9f736826cf606a05119736b3ad4'
-            '777f8cfc8b82607696916a92d976f119cebf6af8b61acba033fa406dc47cab6413785080dc0280ba27e071ea14a53ca61f5ce49b3d13da3b9f0a3c1c65978664')
+            'SKIP')
 sha512sums_x86_64=('6560774e283129fa556a916d412903893388194625472062a36dd84d771ae261974b0c6a3b4642b081e8e19a7bb9477720e00f39efa4934aa8301001127e69a6')
 install=typora.install
 
