@@ -35,7 +35,6 @@ jobs:
         - r8168-dkms
         - heroic-games-launcher-git
         - firefox-pwa
-        - rustdesk-git
 #        - lx-music
 
         include:
@@ -64,7 +63,7 @@ jobs:
   buildNonAUR:
     strategy:
       matrix:
-        PKGBUILDs: [xmind-2020, baidunetdisk, typora-electron-crack, electronic-wechat, rtw89-dkms-git, rtw89bt-dkms-git, stacer, plantsvszombies, pvz_beta, plasma-applet-netspeed-git]
+        PKGBUILDs: [xmind-2020, baidunetdisk, typora-electron-crack, electronic-wechat, rtw89-dkms-git, rtw89bt-dkms-git, stacer, plantsvszombies, pvz_beta, plasma-applet-netspeed-git, rustdesk-git]
 
       fail-fast: false
       
