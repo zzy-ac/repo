@@ -28,7 +28,6 @@ jobs:
         - zinit-git
         - kepubify-bin
         - visual-studio-code-bin
-        - optimus-manager-qt
         - listen1-electron
         - flameshot-old
         - icu70
