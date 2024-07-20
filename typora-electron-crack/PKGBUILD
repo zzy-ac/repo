@@ -5,7 +5,7 @@
 
 pkgname=typora-electron-crack
 _pkgname=typora
-pkgver=1.9.8
+pkgver=1.9.3
 _electron=electron27
 pkgrel=1
 pkgdesc="A minimal markdown editor and reader. (Typora with system electron)"
