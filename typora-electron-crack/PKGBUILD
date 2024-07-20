@@ -5,8 +5,8 @@
 
 pkgname=typora-electron-crack
 _pkgname=typora
-pkgver=1.8.10
-_electron=electron25
+pkgver=1.9.8
+_electron=electron27
 pkgrel=1
 pkgdesc="A minimal markdown editor and reader. (Typora with system electron)"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
 url="https://typora.io"
 provides=('typora')
 conflicts=('typora')
-depends=('ripgrep' "${_electron}-bin")
+depends=('ripgrep' "${_electron}")
 makedepends=('asar' 'rust')
 optdepends=(
 	'noto-fonts-emoji: Or some other emoji font to see emojis'
@@ -24,7 +24,7 @@ source=("typora.sh"
 source_x86_64=("${_pkgname}_${pkgver}_amd64.deb::${url}/linux/${_pkgname}_${pkgver}_amd64.deb")
 sha512sums=('6f35ee310308be4c7e726b5e4b7e023c86485fa4dd2f56e61d22eb28207be82cd09aab528e3d0de9881380dd44208479cc29b9f736826cf606a05119736b3ad4'
             'SKIP')
-sha512sums_x86_64=('6560774e283129fa556a916d412903893388194625472062a36dd84d771ae261974b0c6a3b4642b081e8e19a7bb9477720e00f39efa4934aa8301001127e69a6')
+sha512sums_x86_64=('da7714d8a2ef228d1df13bf2a6862f3be3fad51238657e8ee48350380267ecfed29b391e0c66653e3b4322e3dada02d2bea6e1041f5230988358645ea0cf4b28')
 install=typora.install
 
 prepare(){
