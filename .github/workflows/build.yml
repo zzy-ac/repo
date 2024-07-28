@@ -35,6 +35,7 @@ jobs:
         - heroic-games-launcher-git
         - firefox-pwa
         - rustdesk-nightly
+        - plasma6-wallpapers-wallpaper-engine-git
 #        - lx-music
 
         include:
