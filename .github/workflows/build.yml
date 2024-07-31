@@ -34,7 +34,7 @@ jobs:
         - r8168-dkms
         - heroic-games-launcher-git
         - firefox-pwa
-        - rustdesk
+#        - rustdesk
         - plasma6-wallpapers-wallpaper-engine-git
         - 1panel
 #        - lx-music
