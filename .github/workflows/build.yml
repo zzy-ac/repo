@@ -36,7 +36,6 @@ jobs:
         - firefox-pwa
 #        - rustdesk
         - plasma6-wallpapers-wallpaper-engine-git
-        - lightlyshaders-plasma6-git
 #        - lx-music
 
         include:
