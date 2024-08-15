@@ -8,7 +8,7 @@ cat << EOM >> /etc/pacman.conf
 [multilib]
 Include = /etc/pacman.d/mirrorlist
 [archlinuxcn]
-Server = https://repo.archlinuxcn.org/x86_64
+Server = https://cloudflaremirrors.com/archlinux/$repo/os/$arch
 EOM
 
 pacman-key --init
