@@ -37,7 +37,7 @@ jobs:
 #        - rustdesk
         - plasma6-wallpapers-wallpaper-engine-git
         - zsh-theme-powerlevel10k
-#        - lx-music
+        - lx-music
 
         include:
           - repos: git-cola
