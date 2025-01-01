@@ -42,24 +42,31 @@ jobs:
         include:
           - repos: git-cola
             preinstall-pkgs: "at-spi2-core"
+          - repos: realesrgan-ncnn-vulkan
+            preinstall-pkgs: "vulkan-intel"
 
       fail-fast: false
-      
-    runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - uses: ./build-aur-action
       with:
         repo-name: ${{ matrix.repos }}
         preinstallPkgs: ${{ matrix.preinstall-pkgs }}
     
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         path: ./*/*.pkg.tar.zst
         name: ${{ matrix.repos }}
         if-no-files-found: error
+        
+    - uses: ncipollo/release-action@v1
+      with:
+        allowUpdates: true
+        tag: "packages"
+        artifacts: "./*/*.zst"
+        token: ${{ secrets.GITHUB_TOKEN }}
 
 
   buildNonAUR:
@@ -81,7 +88,7 @@ jobs:
           pkgdir: ${{ matrix.PKGBUILDs }}
           aurDeps: true
           
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           path: ./*/*.pkg.tar.zst
           name: ${{ matrix.PKGBUILDs }}
