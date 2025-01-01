@@ -46,6 +46,9 @@ jobs:
             preinstall-pkgs: "vulkan-intel"
 
       fail-fast: false
+
+      
+    runs-on: ubuntu-latest
     
     steps:
     - uses: actions/checkout@v4
