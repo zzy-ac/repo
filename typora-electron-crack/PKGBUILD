@@ -23,12 +23,12 @@ source=("typora.sh"
 "crack.zip::https://github.com/hazukieq/Yporaject/archive/refs/heads/master.zip")
 source_x86_64=("${_pkgname}_${pkgver}_amd64.deb::${url}/linux/${_pkgname}_${pkgver}_amd64.deb")
 sha512sums=('6f35ee310308be4c7e726b5e4b7e023c86485fa4dd2f56e61d22eb28207be82cd09aab528e3d0de9881380dd44208479cc29b9f736826cf606a05119736b3ad4'
-            'SKIP')
-sha512sums_x86_64=('da7714d8a2ef228d1df13bf2a6862f3be3fad51238657e8ee48350380267ecfed29b391e0c66653e3b4322e3dada02d2bea6e1041f5230988358645ea0cf4b28')
+            '87770db4814c841ab4f0c6549489cffbd78fb77586a3ce41d701a93ce9954ebe46696e63c0ffb07f1a2c591f5975a3b51b5989dffe0179a4bdfcdca59a609214')
+sha512sums_x86_64=('dc08b3077388a9168854da0306b32d3153bda6df25c6aa21c061adc6cc8447a42e4368ddcc5ec24cb8b5906cb5342d096ff8efa550e8cd2eeed3683c3fcfb466')
 install=typora.install
 
 prepare(){
-	bsdtar -xf data.tar.xz -C "$srcdir/"
+	bsdtar -xf data.tar.zst -C "$srcdir/"
 	sed -i "s|__ELECTRON__|${_electron}|" ${srcdir}/${_pkgname}.sh
 	cd $srcdir/usr/share/typora/resources/
 	# we do not need rg binary
