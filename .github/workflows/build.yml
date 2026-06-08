@@ -11,8 +11,6 @@ jobs:
     strategy:
       matrix:
         repos:
-        - firefox-esr
-        - firefox-esr-i18n-zh-cn
 #        - aliyunpan-odomu-git
 #        - sabaki-electron
 #        - watt-toolkit-bin
@@ -20,7 +18,6 @@ jobs:
         - koreader-bin
         - google-chrome
         - microsoft-edge-stable-bin
-        - deepin-wine-helper
         - hollywood
         - com.pal.dosbox
         - fcitx5-skin-microsoft_style
@@ -35,11 +32,9 @@ jobs:
         - icu70
         - r8168-dkms
         - heroic-games-launcher-git
-        - firefox-pwa
 #        - rustdesk
         - plasma6-wallpapers-wallpaper-engine-git
 #        - zsh-theme-powerlevel10k
-        - lx-music
 
         include:
           - repos: git-cola
@@ -71,7 +66,7 @@ jobs:
   buildNonAUR:
     strategy:
       matrix:
-        PKGBUILDs: [xmind-2020, baidunetdisk, typora-electron-crack, electronic-wechat, rtw89-dkms-git, rtw89bt-dkms-git, stacer, plantsvszombies, pvz_beta, plasma-applet-netspeed-git]
+        PKGBUILDs: [xmind-2020, baidunetdisk, electronic-wechat, rtw89-dkms-git, rtw89bt-dkms-git, stacer]
 
       fail-fast: false
       
