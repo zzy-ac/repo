@@ -11,6 +11,8 @@ jobs:
     strategy:
       matrix:
         repos:
+        - firefox-esr
+        - firefox-esr-i18n-zh-cn
 #        - aliyunpan-odomu-git
 #        - sabaki-electron
 #        - watt-toolkit-bin
